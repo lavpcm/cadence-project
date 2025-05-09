@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS category CASCADE;
 -- Criar tabela de Categorias de Hábitos
 CREATE TABLE category (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    tipo VARCHAR(100) NOT NULL
+    category_type VARCHAR(100) NOT NULL
 );
 
 -- Criar tabela de Hábitos
@@ -19,6 +19,7 @@ CREATE TABLE habit (
     title VARCHAR(100) NOT NULL,
     more_info VARCHAR(500),
     frequency VARCHAR(100) NOT NULL,
+    active BOOLEAN NOT NULL DEFAULT TRUE,
     
     FOREIGN KEY (category_id) REFERENCES category(id)
         ON DELETE CASCADE ON UPDATE CASCADE
