@@ -34,11 +34,12 @@ O projeto Cadence consiste em um gerenciador de hábitos minimalista, desenvolvi
 
 ## <a name="c3"></a>3. Projeto da Aplicação Web
 
-### 3.1. Modelagem do banco de dados  (Semana 3)
+### 3.1. Modelagem do banco de dados 
 
 A modelagem do banco de dados do sistema Cadence foi estruturada com três entidades principais: Category, Habit e HabitTracker. O objetivo do sistema é permitir a criação, categorização e acompanhamento de hábitos pessoais com frequências personalizadas, de maneira simples e eficiente.
 
-<img src="../assets/modelagem-cadence.jpg"> Imagem 1 -  Modelagem do banco de Dados
+![Modelagem do banco de Dados](../assets/modelagem-cadence.png)
+Imagem 1 -  Modelagem do banco de Dados
 
 É possível conferir o arquivo de modelagem física do banco de dados do Cadence clicando <a href="../scripts/init.sql"> aqui. </a>
 
