@@ -1,18 +1,18 @@
-# Boilerplate MVC em Node.js com PostgreSQL
+# Cadance - Achieve your Goals
 
-Este projeto é um boilerplate básico para uma aplicação Node.js seguindo o padrão MVC (Model-View-Controller), utilizando PostgreSQL como banco de dados.
+Este projeto é um gerenciador de hábitos simples, projetado para ajudar pessoas a criar, acompanhar e manter hábitos ao longo de determinado período de tempo. Seu objetivo principal é facilitar a construção de rotinas alinhadas a metas pessoais do usuário. O projeto segue o padrão MVC (Model-View-Controller), utilizando PostgreSQL como banco de dados.
 
 ## Requisitos
 
-- Node.js (versão X.X.X)
-- PostgreSQL (versão X.X.X)
+- Node.js (versão 22.15.0)
+- PostgreSQL (versão 15.8.0)
 
 ## Instalação
 
 1. **Clonar o repositório:**
 
 ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
+   git clone https://github.com/lavpcm/mvc-boilerplate.git
    cd seu-projeto
 ```
 
@@ -24,7 +24,7 @@ npm install
     
 3. **Configurar o arquivo `.env`:**
     
-Renomeie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente necessárias, como as configurações do banco de dados PostgreSQL.
+No arquivo `.env` configure as variáveis de ambiente necessárias 
     
 
 Configuração do Banco de Dados
@@ -40,17 +40,27 @@ Configuração do Banco de Dados
 npm run init-db
 ```
     
-Isso criará a tabela `users` no seu banco de dados PostgreSQL com UUID como chave primária e inserirá alguns registros de exemplo.
+Cria as tabelas e estruturas necessárias no banco de dados, conforme definido nos modelos do projeto.
+
+3. **Verificar a conexão com o banco de dados:**
+
+    Certifique-se de que o banco de dados está em execução e que as credenciais no arquivo `.env` estão corretas. Você pode testar a conexão executando o comando:
+
+    ```bash
+    npm run check-db
+    ```
+
+    Este comando verificará se o banco de dados está acessível e se as tabelas foram criadas corretamente.
     
 
 Funcionalidades
 ---------------
 
-* **Padrão MVC:** Estrutura organizada em Model, View e Controller.
-* **PostgreSQL:** Banco de dados relacional utilizado para persistência dos dados.
-* **UUID:** Utilização de UUID como chave primária na tabela `users`.
-* **Scripts com `nodemon`:** Utilização do `nodemon` para reiniciar automaticamente o servidor após alterações no código.
-* **Testes:** Inclui estrutura básica para testes automatizados.
+## Funcionalidades
+
+- **Gerenciamento de Hábitos**: Criação, edição e exclusão de hábitos personalizados.
+- **Acompanhamento de Progresso**: Visualização do progresso diário, semanal e mensal dos hábitos.
+- **Configuração Personalizada**: Permite que os usuários ajustem preferências e metas individuais.
 
 Scripts Disponíveis
 -------------------
@@ -60,7 +70,7 @@ Scripts Disponíveis
 * `npm run test`: Executa os testes automatizados.
 * `npm run test:coverage`: Executa os testes e gera um relatório de cobertura de código.
 
-Estrutura de Diretórios
+Estrutura de Diretórios (a ser desenvolvida)
 -----------------------
 
 * **`config/`**: Configurações do banco de dados e outras configurações do projeto.
@@ -68,12 +78,8 @@ Estrutura de Diretórios
 * **`models/`**: Modelos da aplicação (definições de dados e interações com o banco de dados).
 * **`routes/`**: Rotas da aplicação.
 * **`tests/`**: Testes automatizados.
-* **`views/`**: Views da aplicação (se aplicável).
+* **`views/`**: Views da aplicação (ainda não aplicável, a ser desenvolvido ).
 
-Contribuição
-------------
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir um issue ou enviar um pull request.
 
 Licença
 -------

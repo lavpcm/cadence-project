@@ -3,15 +3,15 @@ const path = require('path');
 const { Pool } = require('pg');
 require('dotenv').config();
 
+const isSSL = process.env.DB_SSL === 'true';
+
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
   database: process.env.DB_DATABASE,
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: isSSL ? { rejectUnauthorized: false } : false,
 });
 
 const runSQLScript = async () => {

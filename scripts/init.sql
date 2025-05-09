@@ -1,35 +1,36 @@
--- init.sql
-
--- Criar extensão para suportar UUIDs, se ainda não estiver ativada
+-- Ativar extensão de UUID, se ainda não estiver ativa
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Criar tabela de usuários com UUID como chave primária
-CREATE TABLE IF NOT EXISTS users (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  name VARCHAR(100) NOT NULL,
-  email VARCHAR(100) UNIQUE NOT NULL
+-- Apagar tabelas existentes, se houver
+DROP TABLE IF EXISTS habit_tracker CASCADE;
+DROP TABLE IF EXISTS habit CASCADE;
+DROP TABLE IF EXISTS category CASCADE;
+
+-- Criar tabela de Categorias de Hábitos
+CREATE TABLE category (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    tipo VARCHAR(100) NOT NULL
 );
 
--- Inserir 20 usuários com nomes e emails aleatórios
-INSERT INTO users (name, email)
-VALUES 
-  ('Alice Smith', 'alice.smith@example.com'),
-  ('Bob Johnson', 'bob.johnson@example.com'),
-  ('Carol Williams', 'carol.williams@example.com'),
-  ('David Jones', 'david.jones@example.com'),
-  ('Emma Brown', 'emma.brown@example.com'),
-  ('Frank Davis', 'frank.davis@example.com'),
-  ('Grace Wilson', 'grace.wilson@example.com'),
-  ('Henry Moore', 'henry.moore@example.com'),
-  ('Isabella Taylor', 'isabella.taylor@example.com'),
-  ('Jack Lee', 'jack.lee@example.com'),
-  ('Kate Clark', 'kate.clark@example.com'),
-  ('Liam Martinez', 'liam.martinez@example.com'),
-  ('Mia Rodriguez', 'mia.rodriguez@example.com'),
-  ('Noah Garcia', 'noah.garcia@example.com'),
-  ('Olivia Hernandez', 'olivia.hernandez@example.com'),
-  ('Patrick Martinez', 'patrick.martinez@example.com'),
-  ('Quinn Lopez', 'quinn.lopez@example.com'),
-  ('Rose Thompson', 'rose.thompson@example.com'),
-  ('Samuel Perez', 'samuel.perez@example.com'),
-  ('Tara Scott', 'tara.scott@example.com');
+-- Criar tabela de Hábitos
+CREATE TABLE habit (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    category_id UUID,
+    title VARCHAR(100) NOT NULL,
+    more_info VARCHAR(500),
+    frequency VARCHAR(100) NOT NULL,
+    
+    FOREIGN KEY (category_id) REFERENCES category(id)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Criar tabela de Habit Tracker (Registro de Hábitos)
+CREATE TABLE habit_tracker (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    habit_id UUID REFERENCES habit(id),
+    current_day DATE NOT NULL,
+    done BOOLEAN NOT NULL,
+
+    FOREIGN KEY (habit_id) REFERENCES habit(id)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
