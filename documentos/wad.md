@@ -1,6 +1,6 @@
 # Web Application Document - Projeto Individual - Módulo 2 - Inteli
 
-## Cadance - Achieve your Goals
+## Cadence - Achieve your Goals
 
 #### Lavínia Pietra Carvalho Mendonça
 
@@ -16,7 +16,7 @@
 
 ## <a name="c1"></a>1. Introdução
 
-Este projeto consiste em um gerenciador de hábitos minimalista, desenvolvido com o objetivo de auxiliar usuários na criação, monitoramento e manutenção de hábitos ao longo do tempo. A aplicação busca promover a construção de rotinas consistentes, alinhadas às metas pessoais de cada indivíduo, contribuindo para o desenvolvimento de uma vida mais organizada e produtiva. A arquitetura do sistema segue o padrão MVC (Model-View-Controller), garantindo uma separação clara de responsabilidades e maior facilidade de manutenção. O armazenamento dos dados é feito utilizando o banco de dados relacional PostgreSQL, oferecendo robustez e escalabilidade à aplicação.
+O projeto Cadence consiste em um gerenciador de hábitos minimalista, desenvolvido com o objetivo de auxiliar usuários na criação, monitoramento e manutenção de hábitos ao longo do tempo. A aplicação busca promover a construção de rotinas consistentes, alinhadas às metas pessoais de cada indivíduo, contribuindo para o desenvolvimento de uma vida mais organizada e produtiva. A arquitetura do sistema segue o padrão MVC (Model-View-Controller), garantindo uma separação clara de responsabilidades e maior facilidade de manutenção. O armazenamento dos dados é feito utilizando o banco de dados relacional PostgreSQL, oferecendo escalabilidade à aplicação.
 
 ---
 
@@ -36,9 +36,16 @@ Este projeto consiste em um gerenciador de hábitos minimalista, desenvolvido co
 
 ### 3.1. Modelagem do banco de dados  (Semana 3)
 
-*Posicione aqui os diagramas de modelos relacionais do seu banco de dados, apresentando todos os esquemas de tabelas e suas relações. Utilize texto para complementar suas explicações, se necessário.*
+A modelagem do banco de dados do sistema Cadence foi estruturada com três entidades principais: Category, Habit e HabitTracker. O objetivo do sistema é permitir a criação, categorização e acompanhamento de hábitos pessoais com frequências personalizadas, de maneira simples e eficiente.
 
-*Posicione também o modelo físico com o Schema do BD (arquivo .sql)*
+<img src="../assets/modelagem-cadance.jpg"> Imagem 1 -  Modelagem do banco de Dados
+
+É possível conferir o arquivo de modelagem física do banco de dados do Cadence clicando <a href="../scripts/init.sql"> aqui. </a>
+
+
+
+
+
 
 ### 3.1.1 BD e Models (Semana 5)
 *Descreva aqui os Models implementados no sistema web*
