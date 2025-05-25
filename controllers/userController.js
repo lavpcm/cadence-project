@@ -1,5 +1,5 @@
 // controllers/userController.js
-// omplementação do CRUD de usuários
+// complementação do CRUD de usuários
 // exemplo que veio no arquivo, não utilizado no projeto pessoal sendo desenvolvido
 
 const userService = require('../services/userService');
