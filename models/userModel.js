@@ -1,5 +1,6 @@
 const db = require('../config/db');
 
+// chamada de strings sql para o banco de dados
 class User {
   static async getAll() {
     const result = await db.query('SELECT * FROM users');
