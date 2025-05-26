@@ -70,7 +70,7 @@ Scripts Disponíveis
 * `npm run test`: Executa os testes automatizados.
 * `npm run test:coverage`: Executa os testes e gera um relatório de cobertura de código.
 
-Estrutura de Diretórios (a ser desenvolvida)
+Estrutura de Diretórios 
 -----------------------
 
 * **`config/`**: Configurações do banco de dados e outras configurações do projeto.
