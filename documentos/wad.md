@@ -48,19 +48,48 @@ Imagem 1 -  Modelagem do banco de Dados
 
 
 
-### 3.1.1 BD e Models (Semana 5)
-*Descreva aqui os Models implementados no sistema web*
+### 3.1.1 BD e Models
+Os Models implementados no sistema do projeto Cadence são responsáveis pela comunicação direta com o banco de dados PostgreSQL, facilitando as operações de manipulação de dados por meio do CRUD (create, read, update, delete). Essa arquitetura promove a organização do código e abstrai a complexidade das consultas SQL, tornando o desenvolvimento da aplicação modular e eficiente.
 
-### 3.2. Arquitetura (Semana 5)
+A camada de model é composta por:
 
-*Posicione aqui o diagrama de arquitetura da sua solução de aplicação web. Atualize sempre que necessário.*
+- **CategoryModel**: manipula os dados relacionados às categorias de hábitos. Inclui métodos para criar, buscar e deletar categorias no banco de dados.
 
-**Instruções para criação do diagrama de arquitetura**  
-- **Model**: A camada que lida com a lógica de negócios e interage com o banco de dados.
-- **View**: A camada responsável pela interface de usuário.
-- **Controller**: A camada que recebe as requisições, processa as ações e atualiza o modelo e a visualização.
-  
-*Adicione as setas e explicações sobre como os dados fluem entre o Model, Controller e View.*
+- **HabitModel:** manipula os dados referentes aos hábitos cadastrados pelos usuários. Inclui métodos para criar, listar, editar e deletar hábitos.
+
+- **config/db.js**: arquivo para a conexão com o banco de dados que utiliza a biblioteca pg (um driver para PostgreSQL no ambiente Node.js que configura a pool, gerencia os parâmetros de conexão e fornece interface para a execução de consultas SQL pelos models) para integração com o PostgreSQL.
+
+O banco de dados relacional possui três tabelas principais: _category_, que armazena os tipos de categorias dos hábitos, _habit_, que contém os hábitos registrados, ligados a uma categoria e, por fim, _habit_tracker_, que relaciona os hábitos à marcação diária de execução, sendo responsável por registrar a recorrência de cada hábito.
+
+Essa estrutura proporciona um ambiente robusto e escalável para o desenvolvimento do sistema de gestão de hábitos, facilitando a manutenção e futuras expansões.
+
+### 3.2. Arquitetura
+
+A aplicação web segue o padrão de arquitetura MVC (Model-View-Controller), conforme o diagrama abaixo:
+
+![Diagrama de Arquitetura MVC](../assets/cadence-diagrama-arquitetura.png)
+Imagem 2 -  Diagrama de Arquitetura MVC
+
+A arquitetura é organizada nas seguintes camadas:
+
+- **Client**: camada de requisições HTTP, atualmente representada por ferramentas como Postman (em substituição temporária à interface de usuário). Envia comandos ao servidor por meio das rotas.
+
+- **Routes**: define os endpoints da aplicação (routes/index.js) e direciona as requisições para os controladores apropriados.
+
+- **Controllers:** contém a lógica responsável por processar as requisições, validar dados e interagir com os models. Exemplo:
+
+- ***HabitController.js***: cria, lista, edita e deleta hábitos.
+
+- ***CategoryController.js:*** cria categorias de hábitos.
+
+- **Models**: camada de dados, responsável por executar comandos SQL. Conecta-se ao banco PostgreSQL e realiza as operações com as tabelas habit, category e habit_tracker.
+
+- **Views**: neste momento, representadas pelas respostas JSON da API (ex: res.json(...)). A interface visual (front-end) será implementada nas próximas etapas.
+
+- **Database**: banco PostgreSQL com as tabelas mencionadas, hospedado separadamente (Database Server).
+
+O fluxo de dados segue o caminho
+**Client → Routes → Controllers → Models → Database → Controllers → Views → Client** que permite uma separação clara de responsabilidades e facilitando a escalabilidade e manutenção da aplicação.
 
 ### 3.3. Wireframes (Semana 03 - opcional)
 
