@@ -1,4 +1,3 @@
-// importa a conexão com o banco de dados e o modelo de categoria
 const pool = require('../config/db');
 
 const CategoryModel = {

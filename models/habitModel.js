@@ -1,4 +1,3 @@
-// models/HabitModel.js
 const pool = require('../config/db');
 
 const HabitModel = {

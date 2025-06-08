@@ -3,27 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= pageTitle %></title>  
-  <style>
-    <%- include('../css/style.css'); %>
-  </style>
+  <title>Cadence - Habits</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <!-- Inclui o cabeçalho como um partial -->
-  <%- include('../components/header') %>
+<header>
+  <nav>
+    <ul>
+      <li><a href="../pages/home.ejs">Home</a></li>
+      <li><a href="../pages/habits.ejs">Habits</a></li>
+      <li><a href="../pages/tracker.ejs">Tracker</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main>
-    <!-- Renderiza o conteúdo da página específica -->
-    <%- include(content) %>
-  </main>
+<main>
+  <h1>Habits</h1>
+  <button onclick="openHabitPopup()">Add Habit</button>
+  <button onclick="openCategoryPopup()">Add Category</button>
+</main>
 
-  <footer>
-    <!-- Rodapé comum aqui -->
-    <p>Rodapé da Aplicação</p>
-  </footer>
+<footer>
+  <p>Cadence</p>
+</footer>
 
-  <!-- Adicione scripts JS se necessário -->
-  <script src="/js/script.js"></script>
-  
+<!-- Popup de Criar HÃ¡bito -->
+<div id="createHabitPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closeHabitPopup()">&times;</span>
+    <h2>Create Habit</h2>
+    <form id="habitForm">
+      <label for="habitName">Habit Name:</label>
+      <input type="text" id="habitName" required>
+
+      <label for="habitCategory">Category:</label>
+      <select id="habitCategory" required></select>
+      <button type="button" onclick="openCategoryPopup()">+ New Category</button>
+
+      <label>Frequency:</label>
+      <div class="days">
+        <label><input type="checkbox" value="Sunday"> Sunday</label>
+        <label><input type="checkbox" value="Monday"> Monday</label>
+        <label><input type="checkbox" value="Tuesday"> Tuesday</label>
+        <label><input type="checkbox" value="Wednesday"> Wednesday</label>
+        <label><input type="checkbox" value="Thursday"> Thursday</label>
+        <label><input type="checkbox" value="Friday"> Friday</label>
+        <label><input type="checkbox" value="Saturday"> Saturday</label>
+      </div>
+
+      <label for="habitDescription">Description:</label>
+      <input type="text" id="habitDescription">
+
+      <button type="submit">Create</button>
+    </form>
+  </div>
+</div>
+
+<!-- Popup de Criar Categoria -->
+<div id="createCategoryPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closeCategoryPopup()">&times;</span>
+    <h2>Create Category</h2>
+    <input type="text" id="categoryName" placeholder="Category Name">
+    <button onclick="createCategory()">Save</button>
+  </div>
+</div>
+
+<script src="../../scripts/script.js"></script>
 </body>
 </html>

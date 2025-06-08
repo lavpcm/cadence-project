@@ -110,7 +110,35 @@ O fluxo de dados segue o caminho
 
 ### 3.7 Interface e Navegação (Semana 07)
 
-*Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+
+O desenvolvimento da interface web do sistema Cadence é voltado para o acompanhamento e gestão de hábitos, conforme a proposta inicial. A interface foi implementada utilizando EJS, que permite a renderização dinâmica de páginas diretamente no servidor por meio do framework Express. Três páginas principais foram estruturadas nesta etapa:
+
+A primeira é a página inicial (home.ejs), que apresenta brevemente o sistema ao usuário e fornece os botões de navegação para outras seções, habits.ejs e tracker.ejs, ambas descritas a seguir.
+
+![home](../assets/home.png)
+Imagem 3 -  Tela Home
+
+A segunda é a página de hábitos (habits.ejs), que representa o núcleo da aplicação. Nela, o usuário pode criar novos hábitos e categorias. Cada hábito pode ser configurado com um nome, descrição e dias da semana em que deve ser realizado. O botão "Add Habit" abre um pop-up com um formulário que permite preencher essas informações. Além disso, o botão "Add Category" abre outro pop-up que permite a criação de categorias personalizadas. As categorias criadas são listadas dinamicamente por meio de requisições ao backend.
+
+![habits](../assets/habits.png)
+Imagem 4 -  Tela Habits
+
+![category](../assets/create_category.png)
+Imagem 5 -  Create Category (Habits)
+
+![new-habit](../assets/create_habit.png)
+Imagem 6 -  Create Habit (Habits)
+
+A terceira página, tracker.ejs, é estruturada para exibir visualmente o progresso do usuário, com marcadores de conclusão por dia. A página mostra os hábitos e suas informações.
+
+![tracker](../assets/tracker.png)
+Imagem 7 -  Create Category (Habits)
+
+A navegação entre as páginas é feita por meio de um menu fixo no topo da aplicação, garantindo fácil acesso a qualquer parte do sistema. Toda a comunicação entre frontend e backend é feita por meio de requisições fetch API no arquivo script.js, que acessa rotas da API hospedadas no backend Express. As rotas utilizadas incluem *GET /api/category* (para listar as categorias disponíveis), *POST /api/category* (para criar uma nova categoria), *GET /api/habit* (para listar os hábitos cadastrados) e *POST /api/habit* (para criar um novo hábito).
+
+Essas requisições são tratadas por controllers que se comunicam com o banco de dados Supabase para armazenar e recuperar as informações do usuário.
+
+Nesta etapa, o foco foi garantir que as funcionalidades básicas da interface estivessem operacionais, incluindo a criação e listagem de hábitos e categorias, além de uma experiência de navegação fluida entre as páginas. A estrutura visual, embora simples, já permite interações fundamentais e serve de base para as melhorias visuais e funcionais dos próximos passos. Os próximos passos da aplicação contam com, por exemplo, a adoção de mais requisições realizadas por meio do front-end, como a edição de hábitos já existentes e exclusão de categorias não mais utilizadas. 
 
 ---
 

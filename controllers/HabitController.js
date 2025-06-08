@@ -1,33 +1,68 @@
-// controllers/HabitController.js
-const HabitModel = require('../models/HabitModel');
+const HabitModel = require('../models/habitModel');
+const CategoryModel = require('../models/categoryModel');
+const HabitTrackerModel = require('../models/habitTrackerModel');
 
 exports.createHabit = async (req, res) => {
   try {
-    const newHabit = await HabitModel.create(req.body);
+    const { title, category_id, frequency, more_info, active = true } = req.body;
+    if (!title || !category_id) {
+      return res.status(400).json({ error: 'Title and category are required' });
+    }
+    const newHabit = await HabitModel.create({ title, category_id, frequency, more_info, active });
     res.status(201).json(newHabit);
   } catch (err) {
+    console.error('Error creating habit:', err);
     res.status(500).json({ error: err.message });
   }
 };
 
 exports.listHabits = async (req, res) => {
   try {
-    const habits = await HabitModel.findAll();
+    const currentDay = new Date().toISOString().split('T')[0];
+    const habitsResult = await HabitModel.findAll();
+    const habits = await Promise.all(habitsResult.map(async habit => {
+      const category = await CategoryModel.findById(habit.category_id);
+      const tracker = await HabitTrackerModel.findByHabitIdAndDate(habit.id, currentDay);
+      return {
+        id: habit.id,
+        title: habit.title,
+        category: category ? { id: category.id, category_type: category.category_type } : null,
+        frequency: habit.frequency,
+        more_info: habit.more_info,
+        active: habit.active,
+        tracker: tracker ? { done: tracker.done } : null
+      };
+    }));
     res.status(200).json(habits);
   } catch (err) {
+    console.error('Error listing habits:', err);
     res.status(500).json({ error: err.message });
   }
 };
 
 exports.editHabit = async (req, res) => {
   const { id } = req.params;
+  const { current_day, done, title, category_id, frequency, more_info, active } = req.body;
   try {
-    const updated = await HabitModel.update(id, req.body);
-    if (!updated) {
-      return res.status(404).json({ message: 'Hábito não encontrado' });
+    if (current_day && done !== undefined) {
+      let tracker = await HabitTrackerModel.findByHabitIdAndDate(id, current_day);
+      if (tracker) {
+        tracker = await HabitTrackerModel.update(id, current_day, done);
+      } else {
+        tracker = await HabitTrackerModel.create({ habit_id: id, current_day, done });
+      }
+      return res.status(200).json(tracker);
     }
-    res.status(200).json(updated);
+    if (title || category_id || frequency || more_info !== undefined || active !== undefined) {
+      const updated = await HabitModel.update(id, { title, category_id, frequency, more_info, active });
+      if (!updated) {
+        return res.status(404).json({ message: 'Hábito não encontrado' });
+      }
+      return res.status(200).json(updated);
+    }
+    return res.status(400).json({ error: 'No valid fields provided for update' });
   } catch (err) {
+    console.error('Error updating habit:', err);
     res.status(500).json({ error: err.message });
   }
 };
@@ -41,6 +76,7 @@ exports.deleteHabit = async (req, res) => {
     }
     res.status(200).json({ message: 'Hábito removido com sucesso' });
   } catch (err) {
+    console.error('Error deleting habit:', err);
     res.status(500).json({ error: err.message });
   }
 };
