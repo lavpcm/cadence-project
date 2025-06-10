@@ -24,6 +24,42 @@
     <div id="habitList" class="habit-list"></div>
   </main>
 
+  <!-- Popup de Editar Hábito -->
+  <div id="editHabitPopup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closeEditHabitPopup()">×</span>
+      <h2>Edit Habit</h2>
+      <form id="editHabitForm">
+        <label for="editHabitName">Habit Name:</label>
+        <input type="text" id="editHabitName" required>
+
+        <label for="editHabitCategory">Category:</label>
+        <div class="category-group">
+          <select id="editHabitCategory" required>
+            <option value="">Select a category</option>
+          </select>
+          <button type="button" onclick="openCategoryPopup()">+</button>
+        </div>
+
+        <label>Frequency:</label>
+        <div class="days">
+          <label><input type="checkbox" value="Sunday"> Sunday</label>
+          <label><input type="checkbox" value="Monday"> Monday</label>
+          <label><input type="checkbox" value="Tuesday"> Tuesday</label>
+          <label><input type="checkbox" value="Wednesday"> Wednesday</label>
+          <label><input type="checkbox" value="Thursday"> Thursday</label>
+          <label><input type="checkbox" value="Friday"> Friday</label>
+          <label><input type="checkbox" value="Saturday"> Saturday</label>
+        </div>
+
+        <label for="editHabitDescription">Description:</label>
+        <input type="text" id="editHabitDescription">
+
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  </div>
+
   <footer>
     <p>© 2025 Cadence. All rights reserved.</p>
   </footer>

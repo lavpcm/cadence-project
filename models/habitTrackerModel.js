@@ -28,6 +28,11 @@ const HabitTrackerModel = {
     const values = [done, habit_id, current_day];
     const result = await pool.query(query, values);
     return result.rows[0];
+  },
+
+  async deleteByHabitId(habit_id) {
+    const query = 'DELETE FROM habit_tracker WHERE habit_id = $1';
+    await pool.query(query, [habit_id]);
   }
 };
 

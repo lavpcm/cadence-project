@@ -159,6 +159,7 @@ button:focus {
   padding: 1rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--shadow-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .habit-card h3 {
@@ -187,6 +188,40 @@ button:focus {
   height: 1rem;
 }
 
+.habit-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.habit-actions button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.habit-actions button:first-child {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.habit-actions button:first-child:hover {
+  background-color: var(--hover-color);
+  color: var(--primary-color);
+}
+
+.habit-actions button:last-child {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.habit-actions button:last-child:hover {
+  background-color: var(--hover-color);
+  color: var(--primary-color);
+}
+
 .popup {
   display: none;
   position: fixed;
@@ -207,6 +242,7 @@ button:focus {
   width: 90%;
   max-width: 400px;
   position: relative;
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 .popup-content .close {
@@ -216,6 +252,11 @@ button:focus {
   font-size: 1.25rem;
   color: var(--neutral-dark);
   cursor: pointer;
+  transition: var(--transition);
+}
+
+.popup-content .close:hover {
+  color: var(--primary-color);
 }
 
 .popup-content h2 {
@@ -230,25 +271,42 @@ button:focus {
   gap: 1rem;
 }
 
-.popup-content label {
+.popup-content form label {
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--neutral-dark);
 }
 
-.popup-content input,
-.popup-content select {
+.popup-content form input[type="text"],
+.popup-content form select {
   padding: 0.5rem;
   border: 1px solid var(--neutral-dark);
   border-radius: var(--border-radius);
   font-size: 0.95rem;
   color: var(--neutral-dark);
+  transition: var(--transition);
 }
 
-.popup-content input:focus,
-.popup-content select:focus {
+.popup-content form input[type="text"]:focus,
+.popup-content form select:focus {
   border-color: var(--primary-color);
   outline: none;
+}
+
+.popup-content form button[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 0.75rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.popup-content form button[type="submit"]:hover {
+  background-color: var(--hover-color);
+  color: var(--primary-color);
 }
 
 .popup-content .error {
@@ -266,6 +324,20 @@ button:focus {
   flex: 1;
 }
 
+.category-group button {
+  padding: 0.5rem 1rem;
+  background-color: var(--neutral-dark);
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.category-group button:hover {
+  background-color: var(--primary-color);
+}
+
 .days {
   display: flex;
   flex-wrap: wrap;
@@ -277,6 +349,7 @@ button:focus {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
+  color: var(--neutral-dark);
 }
 
 .days input[type="checkbox"] {
@@ -346,6 +419,15 @@ footer {
   button {
     width: 100%;
     max-width: 250px;
+  }
+
+  .habit-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .habit-actions button {
+    width: 100%;
   }
 }
 
