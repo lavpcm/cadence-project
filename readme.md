@@ -1,4 +1,4 @@
-# Cadance - Achieve your Goals
+# Cadance - Track your habits simply and stay consistent.
 
 Este projeto é um gerenciador de hábitos simples, projetado para ajudar pessoas a criar, acompanhar e manter hábitos ao longo de determinado período de tempo. Seu objetivo principal é facilitar a construção de rotinas alinhadas a metas pessoais do usuário. O projeto segue o padrão MVC (Model-View-Controller), utilizando PostgreSQL como banco de dados.
 
@@ -37,7 +37,7 @@ Configuração do Banco de Dados
 2. **Executar o script SQL de inicialização:**
     
 ```bash
-npm run init-db
+node server.js
 ```
     
 Cria as tabelas e estruturas necessárias no banco de dados, conforme definido nos modelos do projeto.

@@ -1,6 +1,6 @@
 # Web Application Document - Projeto Individual - Módulo 2 - Inteli
 
-## Cadence - Achieve your Goals
+## Cadence - Track your habits simply and stay consistent.
 
 #### Lavínia Pietra Carvalho Mendonça
 
@@ -106,7 +106,46 @@ O fluxo de dados segue o caminho
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
-*Utilize um link para outra página de documentação contendo a descrição completa de cada endpoint. Ou descreva aqui cada endpoint criado para seu sistema.*  
+A WebAPI do sistema Cadence foi desenvolvida utilizando o framework Express.js, seguindo os princípios da arquitetura REST. Abaixo estão descritos os principais endpoints implementados para as entidades do sistema:
+
+- **GET /habits**
+
+Retorna a lista de todos os hábitos cadastrados no sistema.
+
+
+- **POST /habits**
+
+Cria um novo hábito.
+
+
+- **DELETE /habits/:id**
+
+Remove um hábito com base em seu ID.
+
+
+- **GET /categories**
+
+Retorna todas as categorias disponíveis para classificação de hábitos.
+
+
+- **POST /categories**
+
+Cria uma nova categoria.
+
+
+- **GET /habit-tracker/:habitId**
+
+Retorna os registros de acompanhamento de um hábito específico (por ID).
+
+
+- **POST /habit-tracker**
+
+Marca um hábito como realizado em uma determinada data.
+
+
+A WebAPI do sistema Cadence fornece as rotas essenciais para o funcionamento do sistema, permitindo o gerenciamento de hábitos, categorias e acompanhamentos. Sua estrutura simples facilita a manutenção e futuras melhorias.
+
+
 
 ### 3.7 Interface e Navegação (Semana 07)
 
@@ -129,10 +168,10 @@ Imagem 5 -  Create Category (Habits)
 ![new-habit](../assets/create_habit.png)
 Imagem 6 -  Create Habit (Habits)
 
-A terceira página, tracker.ejs, é estruturada para exibir visualmente o progresso do usuário, com marcadores de conclusão por dia. A página mostra os hábitos e suas informações.
+A terceira página, tracker.ejs, é estruturada para exibir visualmente o progresso do usuário, com marcadores de conclusão por dia. A página mostra os hábitos e suas informações, permitindo a edição e exclusão de hábitos já existentes.
 
 ![tracker](../assets/tracker.png)
-Imagem 7 -  Create Category (Habits)
+Imagem 7 -  Habit Tracker (Tracker)
 
 A navegação entre as páginas é feita por meio de um menu fixo no topo da aplicação, garantindo fácil acesso a qualquer parte do sistema. Toda a comunicação entre frontend e backend é feita por meio de requisições fetch API no arquivo script.js, que acessa rotas da API hospedadas no backend Express. As rotas utilizadas incluem *GET /api/category* (para listar as categorias disponíveis), *POST /api/category* (para criar uma nova categoria), *GET /api/habit* (para listar os hábitos cadastrados) e *POST /api/habit* (para criar um novo hábito).
 
@@ -146,13 +185,19 @@ Nesta etapa, o foco foi garantir que as funcionalidades básicas da interface es
 
 ### 4.1 Demonstração do Sistema Web (Semana 8)
 
-*VIDEO: Insira o link do vídeo demonstrativo nesta seção*
-*Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+O vídeo demonstrativo apresenta o sistema web Cadence em funcionamento, destacando as principais funcionalidades desenvolvidas e a integração completa entre front-end, back-end e banco de dados. O sistema permite o cadastro, listagem e exclusão de hábitos, além do acompanhamento diário por meio de uma interface simples e funcional. A aplicação foi construída com base na arquitetura MVC, utilizando Node.js com Express no back-end, EJS no front-end, e PostgreSQL como banco de dados relacional. O vídeo também evidencia o funcionamento das rotas, o uso da fetch API para comunicação entre as camadas e os principais desafios enfrentados durante o desenvolvimento, podendo ser acessado por meio do link a seguir:
+
+https://drive.google.com/file/d/1kNnhCm2E1cb3AZG0bOfcascMWZ7-CZcV/view?usp=sharing
+
+
 
 ### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
 
-*Indique pontos fortes e pontos a melhorar de maneira geral.*
-*Relacione também quaisquer outras ideias que você tenha para melhorias futuras.*
+O desenvolvimento do sistema Cadence permitiu consolidar conhecimentos práticos sobre a construção de aplicações web completas utilizando a arquitetura MVC. Um dos principais pontos fortes do projeto foi a estruturação clara entre camadas de models, views e controllers, além da implementação funcional das rotas e da comunicação eficiente entre o front-end e o back-end por meio da fetch API. A interface também se destacou pela simplicidade e facilidade de uso, cumprindo o objetivo de permitir o registro e acompanhamento de hábitos diários.
+
+Entre os pontos a melhorar, destaca-se a necessidade de um sistema de validação de dados mais robusto, tratamento de erros mais detalhado e melhorias na responsividade da interface para diferentes tamanhos de tela. Além disso, a organização dos arquivos pode ser refinada para facilitar a escalabilidade futura.
+
+Como trabalhos futuros, propõe-se a implementação de autenticação de usuários, permitindo que cada pessoa tenha sua própria lista de hábitos, bem como a criação de filtros por categoria, facilitando a visualização e o gerenciamento dos hábitos cadastrados. Outras possíveis melhorias incluem estatísticas de progresso e integração com dispositivos móveis para aumentar o engajamento do usuário.
 
 
 
@@ -160,5 +205,4 @@ Nesta etapa, o foco foi garantir que as funcionalidades básicas da interface es
 
 _Incluir as principais referências de seu projeto, para que o leitor possa consultar caso ele se interessar em aprofundar._<br>
 
----
 ---
